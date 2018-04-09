@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Hey there! Welcome to the source code, I've tried to add some notes in here to make everyone's life a little easier. I've also added some comments to the CSS file, which you should check out. -->
+
+<!-- Drew Vosburg -->
+
+
+<head>
+  <!-- Some dumb basic meta junk -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page title that shows up in tabs etc -->
+  <title>Webcast: GitLab Intro to CI</title>
+
+  <!-- DNS Prefetch to speed up page load -->
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+
+  <!-- Grid System Stylesheet: -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css">
+
+  <!-- My core styles live here: -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- Snagged the logo SVG from the GitLab website source -->
+          <a class="home-logo" href="https://gitlab.com">
+            <svg width="140" height="44" viewBox="0 0 1231 342" xmlns="http://www.w3.org/2000/svg" class="nav-logo"> <g fill="none" fill-rule="evenodd"> <g fill="#8C929D" class="wordmark"> <path d="M764.367 94.13h-20.803l.066 154.74h84.155v-19.136h-63.352l-.066-135.603zM907.917 221.7c-5.2 5.434-13.946 10.87-25.766 10.87-15.838 0-22.22-7.797-22.22-17.957 0-15.354 10.637-22.678 33.332-22.678 4.255 0 11.11.472 14.655 1.18v28.586zm-21.51-93.787c-16.8 0-32.208 5.952-44.23 15.858l7.352 12.73c8.51-4.962 18.91-9.924 33.802-9.924 17.02 0 24.585 8.742 24.585 23.39v7.56c-3.31-.71-10.164-1.184-14.42-1.184-36.404 0-54.842 12.757-54.842 39.454 0 23.86 14.656 35.908 36.876 35.908 14.97 0 29.314-6.852 34.278-17.954l3.782 15.118h14.657v-79.14c0-25.04-10.874-41.815-41.84-41.815zM995.368 233.277c-7.802 0-14.657-.945-19.858-3.308v-71.58c7.093-5.908 15.84-10.16 26.95-10.16 20.092 0 27.893 14.174 27.893 37.09 0 32.6-12.53 47.957-34.985 47.957m8.742-105.364c-18.592 0-28.6 12.64-28.6 12.64V120.59l-.066-26.458H955.116l.066 150.957c10.164 4.25 24.11 6.613 39.24 6.613 38.768 0 57.442-24.804 57.442-67.564 0-33.783-17.26-56.227-47.754-56.227M538.238 110.904c18.438 0 30.258 6.142 38.06 12.285l8.938-15.477c-12.184-10.678-28.573-16.417-46.053-16.417-44.204 0-75.17 26.932-75.17 81.267 0 56.935 33.407 79.14 71.624 79.14 19.148 0 35.46-4.488 46.096-8.976l-.435-60.832V162.76h-56.734v19.135h36.167l.437 46.184c-4.727 2.362-13 4.252-24.11 4.252-30.73 0-51.297-19.32-51.297-60.006 0-41.34 21.275-61.422 52.478-61.422M684.534 94.13h-20.33l.066 25.988v89.771c0 25.04 10.874 41.814 41.84 41.814 4.28 0 8.465-.39 12.53-1.126v-18.245c-2.943.45-6.083.707-9.455.707-17.02 0-24.585-8.74-24.585-23.387v-61.895h34.04v-17.01H684.6l-.066-36.617zM612.62 248.87h20.33V130.747h-20.33v118.12zM612.62 114.448h20.33V94.13h-20.33v20.318z"></path> </g> <path d="M185.398 341.13l68.013-209.322H117.39L185.4 341.13z" fill="#E24329" class="logo-svg-shape logo-dark-orange-shape"></path> <path d="M185.398 341.13l-68.013-209.322h-95.32L185.4 341.128z" fill="#FC6D26" class="logo-svg-shape logo-orange-shape"></path> <path d="M22.066 131.808l-20.67 63.61c-1.884 5.803.18 12.16 5.117 15.744L185.398 341.13 22.066 131.807z" fill="#FCA326" class="logo-svg-shape logo-light-orange-shape"></path> <path d="M22.066 131.808h95.32L76.42 5.735c-2.107-6.487-11.284-6.487-13.39 0L22.065 131.808z" fill="#E24329" class="logo-svg-shape logo-dark-orange-shape"></path> <path d="M185.398 341.13l68.013-209.322h95.32L185.4 341.128z" fill="#FC6D26" class="logo-svg-shape logo-orange-shape"></path> <path d="M348.73 131.808l20.67 63.61c1.884 5.803-.18 12.16-5.117 15.744L185.398 341.13 348.73 131.807z" fill="#FCA326" class="logo-svg-shape logo-light-orange-shape"></path> <path d="M348.73 131.808h-95.32L294.376 5.735c2.108-6.487 11.285-6.487 13.392 0l40.963 126.073z" fill="#E24329" class="logo-svg-shape logo-dark-orange-shape"></path> </g> </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
+            <h2>Webcast: GitLab Intro to CI</h2>
+            <h5>Thursday, April 14, 2018 - 5pm local time</h5>
+            <p>Can't make this time?<br> Register anyway and we'll send you the recording!</p>
+
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
+
+            <div class="card">
+              <div class="card__container">
+                <h4>Register Now</h4>
+                <p>Sign up to receive an email with the link to the webcast when we go live!</p>
+                <form action="">
+                  <label for="">First Name <input type="text" required="required"></label>
+                  <label for="">Last Name <input type="text" required="required"></label>
+                  <label for="">Email Address <input type="email" placeholder="email@example.com" required="required"></label>
+                  <!-- This is the HTML5 way to validate email addresses. The one obnoxious technicality here is that email@example is *technically* a valid email address, but is probably going to be undeliverable. Could also use a regex pattern, but email validation is notoriously complex due to common overly simplified mental models around email addresses. -->
+                  <label for="">Company Name <input type="text" required="required"></label>
+                  <label for="">Country
+                    
+                    
+                    <!-- APOLOGIES: The country selector is obnoxiously long... -->
+                    
+                    <select id="Country" required="required" name="Country">
+                      <option value="">Select...</option>
+                      <option value="United States">United States</option>
+                      <option value="United Kingdom">United Kingdom</option>
+                      <option value="Germany">Germany</option>
+                      <option value="France">France</option>
+                      <option value="Canada">Canada</option>
+                      <option value="Afghanistan">Afghanistan</option>
+                      <option value="Albania">Albania</option>
+                      <option value="Algeria">Algeria</option>
+                      <option value="Andorra">Andorra</option>
+                      <option value="Angola">Angola</option>
+                      <option value="Antigua &amp; Deps">Antigua &amp; Deps</option>
+                      <option value="Argentina">Argentina</option>
+                      <option value="Armenia">Armenia</option>
+                      <option value="Australia">Australia</option>
+                      <option value="Austria">Austria</option>
+                      <option value="Azerbaijan">Azerbaijan</option>
+                      <option value="Bahamas">Bahamas</option>
+                      <option value="Bahrain">Bahrain</option>
+                      <option value="Bangladesh">Bangladesh</option>
+                      <option value="Barbados">Barbados</option>
+                      <option value="Belarus">Belarus</option>
+                      <option value="Belgium">Belgium</option>
+                      <option value="Belize">Belize</option>
+                      <option value="Benin">Benin</option>
+                      <option value="Bhutan">Bhutan</option>
+                      <option value="Bolivia">Bolivia</option>
+                      <option value="Bosnia Herzegovina">Bosnia Herzegovina</option>
+                      <option value="Botswana">Botswana</option>
+                      <option value="Brazil">Brazil</option>
+                      <option value="Brunei">Brunei</option>
+                      <option value="Bulgaria">Bulgaria</option>
+                      <option value="Burkina">Burkina</option>
+                      <option value="Burundi">Burundi</option>
+                      <option value="Cambodia">Cambodia</option>
+                      <option value="Cameroon">Cameroon</option>
+                      <option value="Canada">Canada</option>
+                      <option value="Cape Verde">Cape Verde</option>
+                      <option value="Central African Rep">Central African Rep</option>
+                      <option value="Chad">Chad</option>
+                      <option value="Chile">Chile</option>
+                      <option value="China">China</option>
+                      <option value="Colombia">Colombia</option>
+                      <option value="Comoros">Comoros</option>
+                      <option value="Congo">Congo</option>
+                      <option value="Congo (Democratic Rep)">Congo (Democratic Rep)</option>
+                      <option value="Costa Rica">Costa Rica</option>
+                      <option value="Croatia">Croatia</option>
+                      <option value="Cuba">Cuba</option>
+                      <option value="Cyprus">Cyprus</option>
+                      <option value="Czech Republic">Czech Republic</option>
+                      <option value="Denmark">Denmark</option>
+                      <option value="Djibouti">Djibouti</option>
+                      <option value="Dominica">Dominica</option>
+                      <option value="Dominican Republic">Dominican Republic</option>
+                      <option value="East Timor">East Timor</option>
+                      <option value="Ecuador">Ecuador</option>
+                      <option value="Egypt">Egypt</option>
+                      <option value="El Salvador">El Salvador</option>
+                      <option value="Equatorial Guinea">Equatorial Guinea</option>
+                      <option value="Eritrea">Eritrea</option>
+                      <option value="Estonia">Estonia</option>
+                      <option value="Ethiopia">Ethiopia</option>
+                      <option value="Fiji">Fiji</option>
+                      <option value="Finland">Finland</option>
+                      <option value="France">France</option>
+                      <option value="Gabon">Gabon</option>
+                      <option value="Gambia">Gambia</option>
+                      <option value="Georgia">Georgia</option>
+                      <option value="Germany">Germany</option>
+                      <option value="Ghana">Ghana</option>
+                      <option value="Greece">Greece</option>
+                      <option value="Grenada">Grenada</option>
+                      <option value="Guatemala">Guatemala</option>
+                      <option value="Guinea">Guinea</option>
+                      <option value="Guinea-Bissau">Guinea-Bissau</option>
+                      <option value="Guyana">Guyana</option>
+                      <option value="Haiti">Haiti</option>
+                      <option value="Honduras">Honduras</option>
+                      <option value="Hungary">Hungary</option>
+                      <option value="Iceland">Iceland</option>
+                      <option value="India">India</option>
+                      <option value="Indonesia">Indonesia</option>
+                      <option value="Iran">Iran</option>
+                      <option value="Iraq">Iraq</option>
+                      <option value="Ireland (Republic)">Ireland (Republic)</option>
+                      <option value="Israel">Israel</option>
+                      <option value="Italy">Italy</option>
+                      <option value="Ivory Coast">Ivory Coast</option>
+                      <option value="Jamaica">Jamaica</option>
+                      <option value="Japan">Japan</option>
+                      <option value="Jordan">Jordan</option>
+                      <option value="Kazakhstan">Kazakhstan</option>
+                      <option value="Kenya">Kenya</option>
+                      <option value="Kiribati">Kiribati</option>
+                      <option value="Korea North">Korea North</option>
+                      <option value="Korea South">Korea South</option>
+                      <option value="Kosovo">Kosovo</option>
+                      <option value="Kuwait">Kuwait</option>
+                      <option value="Kyrgyzstan">Kyrgyzstan</option>
+                      <option value="Laos">Laos</option>
+                      <option value="Latvia">Latvia</option>
+                      <option value="Lebanon">Lebanon</option>
+                      <option value="Lesotho">Lesotho</option>
+                      <option value="Liberia">Liberia</option>
+                      <option value="Libya">Libya</option>
+                      <option value="Liechtenstein">Liechtenstein</option>
+                      <option value="Lithuania">Lithuania</option>
+                      <option value="Luxembourg">Luxembourg</option>
+                      <option value="Macedonia">Macedonia</option>
+                      <option value="Madagascar">Madagascar</option>
+                      <option value="Malawi">Malawi</option>
+                      <option value="Malaysia">Malaysia</option>
+                      <option value="Maldives">Maldives</option>
+                      <option value="Mali">Mali</option>
+                      <option value="Malta">Malta</option>
+                      <option value="Marshall Islands">Marshall Islands</option>
+                      <option value="Mauritania">Mauritania</option>
+                      <option value="Mauritius">Mauritius</option>
+                      <option value="Mexico">Mexico</option>
+                      <option value="Micronesia">Micronesia</option>
+                      <option value="Moldova">Moldova</option>
+                      <option value="Monaco">Monaco</option>
+                      <option value="Mongolia">Mongolia</option>
+                      <option value="Montenegro">Montenegro</option>
+                      <option value="Morocco">Morocco</option>
+                      <option value="Mozambique">Mozambique</option>
+                      <option value="Myanmar (Burma)">Myanmar (Burma)</option>
+                      <option value="Namibia">Namibia</option>
+                      <option value="Nauru">Nauru</option>
+                      <option value="Nepal">Nepal</option>
+                      <option value="Netherlands">Netherlands</option>
+                      <option value="New Zealand">New Zealand</option>
+                      <option value="Nicaragua">Nicaragua</option>
+                      <option value="Niger">Niger</option>
+                      <option value="Nigeria">Nigeria</option>
+                      <option value="Norway">Norway</option>
+                      <option value="Oman">Oman</option>
+                      <option value="Pakistan">Pakistan</option>
+                      <option value="Palau">Palau</option>
+                      <option value="Panama">Panama</option>
+                      <option value="Papua New Guinea">Papua New Guinea</option>
+                      <option value="Paraguay">Paraguay</option>
+                      <option value="Peru">Peru</option>
+                      <option value="Philippines">Philippines</option>
+                      <option value="Poland">Poland</option>
+                      <option value="Portugal">Portugal</option>
+                      <option value="Qatar">Qatar</option>
+                      <option value="Romania">Romania</option>
+                      <option value="Russian Federation">Russian Federation</option>
+                      <option value="Rwanda">Rwanda</option>
+                      <option value="St Kitts &amp; Nevis">St Kitts &amp; Nevis</option>
+                      <option value="St Lucia">St Lucia</option>
+                      <option value="Saint Vincent &amp; the Grenadines">Saint Vincent &amp; the Grenadines</option>
+                      <option value="Samoa">Samoa</option>
+                      <option value="San Marino">San Marino</option>
+                      <option value="Sao Tome &amp; Principe">Sao Tome &amp; Principe</option>
+                      <option value="Saudi Arabia">Saudi Arabia</option>
+                      <option value="Senegal">Senegal</option>
+                      <option value="Serbia">Serbia</option>
+                      <option value="Seychelles">Seychelles</option>
+                      <option value="Sierra Leone">Sierra Leone</option>
+                      <option value="Singapore">Singapore</option>
+                      <option value="Slovakia">Slovakia</option>
+                      <option value="Slovenia">Slovenia</option>
+                      <option value="Solomon Islands">Solomon Islands</option>
+                      <option value="Somalia">Somalia</option>
+                      <option value="South Africa">South Africa</option>
+                      <option value="South Sudan">South Sudan</option>
+                      <option value="Spain">Spain</option>
+                      <option value="Sri Lanka">Sri Lanka</option>
+                      <option value="Sudan">Sudan</option>
+                      <option value="Suriname">Suriname</option>
+                      <option value="Swaziland">Swaziland</option>
+                      <option value="Sweden">Sweden</option>
+                      <option value="Switzerland">Switzerland</option>
+                      <option value="Syria">Syria</option>
+                      <option value="Taiwan">Taiwan</option>
+                      <option value="Tajikistan">Tajikistan</option>
+                      <option value="Tanzania">Tanzania</option>
+                      <option value="Thailand">Thailand</option>
+                      <option value="Togo">Togo</option>
+                      <option value="Tonga">Tonga</option>
+                      <option value="Trinidad &amp; Tobago">Trinidad &amp; Tobago</option>
+                      <option value="Tunisia">Tunisia</option>
+                      <option value="Turkey">Turkey</option>
+                      <option value="Turkmenistan">Turkmenistan</option>
+                      <option value="Tuvalu">Tuvalu</option>
+                      <option value="Uganda">Uganda</option>
+                      <option value="Ukraine">Ukraine</option>
+                      <option value="United Arab Emirates">United Arab Emirates</option>
+                      <option value="United Kingdom">United Kingdom</option>
+                      <option value="United States">United States</option>
+                      <option value="Uruguay">Uruguay</option>
+                      <option value="Uzbekistan">Uzbekistan</option>
+                      <option value="Vanuatu">Vanuatu</option>
+                      <option value="Vatican City">Vatican City</option>
+                      <option value="Venezuela">Venezuela</option>
+                      <option value="Vietnam">Vietnam</option>
+                      <option value="Yemen">Yemen</option>
+                      <option value="Zambia">Zambia</option>
+                      <option value="Zimbabwe">Zimbabwe</option>
+                    </select>
+                  </label>
+                  <!-- YOU MADE IT! -->
+                  <!-- Thanks for sticking through that one. -->
+                  <input type="submit" value="Register Now">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="description">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-5 col-lg-7">
+            
+            <!-- This stuff is about as simple and semantic as it gets... -->
+            <h3>Learn how to use built-in continuous integration in GitLab</h3>
+            <p>In this webcast learn about continuous integration in GitLab. GitLab is more than a repository manager. While you can integrate any of your favorite CI tools, CI is built right into GitLab. If you're new to CI, you'll find this system is easy
+              to learn. If you're new to GitLab, you'll get an overview of using GitLab, and a deep-dive into using GitLab to build and test your projects.</p>
+            <h3>In this webcast:</h3>
+            <ul>
+              <li>Overview of using GitLab to collaborate on software</li>
+              <li>Intro to the built-in continuous integration in GitLab</li>
+              <li>What other CI systems you can use with GitLab</li>
+              <li>How to get started quickly</li>
+              <li>How to test, build, and deploy your code with GitLab</li>
+              <li>Q&amp;A: Questions from webcast attendees answered live!</li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-7 col-lg-5"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <!-- Default footer would go here. -->
+    <!-- And that's it! Really, this page is and should be pretty simple. -->
+  </footer>
+</body>
+</html>

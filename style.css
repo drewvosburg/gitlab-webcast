@@ -1,0 +1,231 @@
+/* Hey there! This is my core stylesheet for the GitLab Webcast announcement landing page. Thanks so much for taking a look at my source! */
+
+/* Drew Vosburg*/
+
+body, html {
+  font-size: 16px;
+  /*          ^-------This is for sizing with "rem" units */
+  
+  margin: 0;
+  padding: 0;
+}
+header, main, footer {
+  font-family: Lato, "Source Sans Pro", sans-serif;
+  font-display: optional;
+  /*                ^--------- This makes loading this font optional and speeds up page render times*/
+  color: #222;
+  line-height: 1.33;
+  font-size: 1rem;
+}
+@media only screen and (min-width: 48rem) {
+  /*   -----------------------------^    */
+  /* I am using this as my primary breakpoint for "non-mobile" */
+  header, main, footer {
+    line-height: 1.6;
+  }
+  .container {
+    width: 95%;
+    /* I don't love when the website has no margin from the side of the screen on mid-sized devices, so I am using 2.5% as a buffer on either side, then maxing out the grid at 1200px, or 75rem */
+    max-width: 75rem;
+  }
+}
+
+
+
+/* TYPOGRAPHY DEFINITIONS */
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, label {
+  margin: 0.5em 0;
+  /* A bit of normalization */
+  font-weight: bold;
+  line-height: 1.1;
+}
+h1, .h1 {
+  font-size: 3.075rem;
+}
+h2, .h2 {
+  font-size: 2.5rem;
+}
+h3, .h3 {
+  font-size: 1.75rem;
+}
+h4, .h4 {
+  font-size: 1.3125rem;
+}
+h5, .h5 {
+  font-size: 1rem;
+}
+h6, .h6, label {
+  font-size: 0.75rem;
+}
+
+@media only screen and (min-width: 48rem) {
+  /* One thing to note with these breakpoints, my styles are mobile first, then I am sprinkling in breakpoint queries along with relevant styles */
+  header, main, footer {
+    font-size: 1.1875rem;
+  }
+  h1, .h1 {
+    font-size: 4.75rem;
+  }
+  h2, .h2 {
+    font-size: 3.375rem;
+  }
+  h3, .h3 {
+    font-size: 2.375rem;
+    line-height: 3rem;
+  }
+  h4, .h4 {
+    font-size: 1.6875rem;
+  }
+  h5, .h5 {
+    font-size: 1.1875rem;
+  }
+  h6, .h6, label {
+    font-size: 0.8125rem;
+  }
+}
+
+/* FORM ELEMENT DEFINITIONS */
+input, select {
+  font-size: 1rem;
+  color: inherit;
+  font-family: inherit;
+  line-height: 1.333;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  padding: .75rem 0.5rem;
+  background: #fff;
+  box-shadow: none;
+}
+select {
+  display: block;
+  outline: none;
+  height: 3rem;
+}
+input:focus, select:focus {
+  box-shadow: 0 0 0.25rem #554488;
+  outline: none;
+}
+button, .button, input[type="submit"] {
+  /* Trying to cover my bases with button selectors */
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 2rem;
+  padding: 0.5rem 2rem;
+  font-weight: bold;
+  -webkit-appearance: none;
+  color: #fff;
+  background: #E14329;
+  border: none;
+  border-radius: 0.25rem;
+  -webkit-font-smoothing: antialiased;
+  font-family: inherit;
+}
+@media only screen and (min-width: 48rem) {
+  input, select {
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    padding: 0.5rem;
+  }
+  button, .button, input[type="submit"] {
+    font-size: 1.1875rem;
+  }
+}
+
+.card {
+  position: relative;
+  margin-top: 2rem;
+}
+.card__container {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 1rem 1rem 0 rgba(0,0,0,0.16);
+  border-radius: 0.5rem;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  color: initial;
+  -webkit-font-smoothing: initial;
+  margin-bottom: -35rem;
+  /* This is a bit of a cheat to get the card to overlap with the purple the way I wanted. */
+}
+@media only screen and (min-width: 48rem) {
+  .card {
+    margin-top: 0;
+  }
+  .card__container {
+    position: absolute;
+    padding: 2rem;
+  }
+}
+
+.card h4 {
+  margin-top: 0;
+}
+.card label {
+  display: block;
+  margin: 1rem 0;
+}
+.card input, .card select {
+  width: 100%;
+  margin-top: 0.25rem;
+  display: block;
+}
+.card input[type="submit"] {
+  margin-top: 2rem;
+}
+
+section {
+  box-sizing: border-box;
+  padding: 0 1rem;
+}
+section.hero {
+  color: #fff;
+  background-image: linear-gradient(135deg, #554488 0%, #6E49CB 100%);
+  -webkit-font-smoothing: antialiased;
+}
+section.hero h5 {
+  margin: 2rem 0;
+}
+section.description {
+  background: #f9f9f9;
+  padding-top: 37rem;
+  /* This is the other half of the overlap cheat from line 144 */
+  padding-bottom: 6rem;
+}
+@media only screen and (min-width: 48rem) {
+  section.hero {
+    padding-top: 3rem;
+    padding-bottom: 8rem;
+  }
+  section.hero h5 {
+    margin-bottom: 4rem;
+  }
+  section.description {
+    padding-top: 2rem;
+  }
+}
+header {
+  border-bottom: 1px solid #d7d7d7;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 1;
+}
+header .home-logo {
+  display: inline-block;
+  float: left;
+  height: 3.125rem;
+  padding: 0.25rem 1rem;
+  box-sizing: border-box;
+}
+header .home-logo svg .wordmark {
+  transition: fill 0.3s;
+}
+header .home-logo:hover svg .wordmark {
+  fill: #6b4fbb;
+}
+main {
+  padding-top: 3rem;
+}
