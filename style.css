@@ -189,7 +189,7 @@ section.hero h5 {
 section.description {
   background: #f9f9f9;
   padding-top: 37rem;
-  /* This is the other half of the overlap cheat from line 144 */
+  /* This is the other half of the overlap cheat from line 148 */
   padding-bottom: 6rem;
 }
 @media only screen and (min-width: 48rem) {
